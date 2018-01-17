@@ -15,8 +15,8 @@
           <router-link :to="{name:item.path}" :id="item.id" ><i></i>{{item.name}}</router-link>
         </li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>
 
 </template>

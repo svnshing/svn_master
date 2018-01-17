@@ -7,6 +7,12 @@ import $ from 'jquery'
 import 'bootstrap/dist/css/bootstrap'
 import 'bootstrap/dist/js/bootstrap'
 
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+// require styles
+import 'swiper/dist/css/swiper.css'
+
+Vue.use(VueAwesomeSwiper)/* { default global options } */
+
 Vue.config.productionTip = false
 
 new Vue({

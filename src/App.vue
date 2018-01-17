@@ -2,7 +2,9 @@
   <div id="app">
     <!--<img src="./assets/logo.png">-->
     <navigator-bar></navigator-bar>
-    <router-view/>
+    <div style="height: 830px">
+      <router-view/>
+    </div>
   </div>
 </template>
 
