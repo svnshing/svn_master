@@ -11,8 +11,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav nav-pills">
-        <li v-for="(item,index) in navigateList" class="navigate-item"  @click.stop = "changeSelected($event,item)" role="presentation" :class="{'active':item.name === selectedName}">
-          <router-link :to="{name:item.path}" :id="item.id" ><i></i>{{item.name}}</router-link>
+        <li v-for="(item,index) in navigateList" class="navigate-item"  @click.stop = "changeSelected($event,item)" role="presentation" :class="{'active':item.path === selectedPathName}">
+          <router-link :to="{name:item.path}" :id="item.id" >
+            <Icon :type="item.iconClass" style="padding-right: 5px;font-size: 18px"/>
+            {{item.name}}
+          </router-link>
         </li>
       </ul>
     </div>
@@ -26,11 +29,11 @@
         name: "navigator-bar",
         data(){
           return {
-            selectedName:"",
+            selectedPathName:"",
             navigateList:[
-              {id:1,name:"首页",path:"cyclicalPhoto"},
-              {id:2,name:"相片",path:"photoRepository"},
-              {id:3,name:"管理",path:"photoManager"},
+              {id:1,name:"首页",path:"WelcomePage",iconClass:"home"},
+              {id:2,name:"相片",path:"PhotoRepository",iconClass:"ios-albums"},
+              {id:3,name:"管理",path:"PhotoManager",iconClass:"edit"},
             ]
           }
         },
@@ -38,11 +41,17 @@
       },
       methods:{
         changeSelected($event,item){
-          this.selectedName = item.name;
+          this.selectedPathName = item.path;
         }
       },
       created(){
-          this.selectedName = "首页";
+           let mather = /\/\w+\s*$/.exec(location.href);
+           let componentName;
+           if(mather && mather[0]){
+             componentName = mather[0].substring(1,mather[0].length);
+           }
+          else componentName = "WelcomePage";
+          this.selectedPathName = componentName;
       }
     }
 </script>

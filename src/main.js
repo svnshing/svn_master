@@ -3,16 +3,17 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import $ from 'jquery'
 import 'bootstrap/dist/css/bootstrap'
 import 'bootstrap/dist/js/bootstrap'
-
+import curvejs from 'curvejs'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-// require styles
 import 'swiper/dist/css/swiper.css'
 
+import iView from 'iview'
+import '!style-loader!css-loader!less-loader!./theme/index.less'
+Object.defineProperty(Vue.prototype, '$curvejs', { value: curvejs });
 Vue.use(VueAwesomeSwiper)/* { default global options } */
-
+Vue.use(iView)
 Vue.config.productionTip = false
 
 new Vue({
