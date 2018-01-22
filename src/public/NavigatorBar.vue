@@ -45,13 +45,13 @@
         }
       },
       created(){
-           let mather = /\/\w+\s*$/.exec(location.href);
+           /*let mather = /\/\w+\s*$/.exec(location.href);
            let componentName;
            if(mather && mather[0]){
              componentName = mather[0].substring(1,mather[0].length);
            }
-          else componentName = "WelcomePage";
-          this.selectedPathName = componentName;
+          else componentName = "WelcomePage";*/
+          this.selectedPathName = this.$route.name;
       }
     }
 </script>

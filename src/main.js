@@ -12,10 +12,11 @@ import 'swiper/dist/css/swiper.css'
 import iView from 'iview'
 import '!style-loader!css-loader!less-loader!./theme/index.less'
 Object.defineProperty(Vue.prototype, '$curvejs', { value: curvejs });
+
 Vue.use(VueAwesomeSwiper)/* { default global options } */
 Vue.use(iView)
 Vue.config.productionTip = false
-
+Vue.config.devtools = true;//开启vueJs-devtools
 new Vue({
   el: '#app',
   router,

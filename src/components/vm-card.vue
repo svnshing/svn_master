@@ -1,19 +1,19 @@
 <template>
   <div :class="[type === 'horizantal' ? 'vm-card-horizantal' : 'vm-card-vertical' , 'vm-panel']">
     <div class="card-img">
-      <img :src="img" alt="">
+      <img :src="src" alt="" :height="height">
       <div v-if="editable && type == 'vertical'" class="control">
         <span class="edit">
           <a :href="editUrl">
-            <i class="fa fa-pencil"></i>
+            <Icon type="edit"></Icon>
           </a>
         </span>
         <span class="delete">
-          <i class="fa fa-trash" @click="modalDelete=true"></i>
+          <Icon type="trash-b" @click="modalDelete=true"></Icon>
         </span>
       </div>
     </div>
-    <div class="card-desc panel-body">
+    <div class="card-desc panel-body" v-if="showDetail">
       <h2>{{ title }}</h2>
       <p>{{ desc }}</p>
       <a :href="detailUrl">
@@ -34,6 +34,14 @@
   export default {
     name: 'VmCard',
     props: {
+      height:{
+        type:String,
+        default:"100%"
+      },
+      showDetail:{
+        type:Boolean,
+        default:false,
+      },
       type: {
         type: String,
         default: 'vertical'
@@ -46,7 +54,7 @@
         type: String,
         default: 'Title'
       },
-      img: {
+      src: {
         type: String,
         default: ""
       },

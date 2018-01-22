@@ -7,7 +7,7 @@
       <Row type="flex" align="middle" justify="space-between" class="panel-body">
         <div class="search-bar">
           <Input placeholder="Please enter ..." v-model="keyword" style="width: 300px"></Input>
-          <Button type="ghost" @click="search"><i class="fa fa-search"></i></Button>
+          <Button type="ghost" @click="search"><Icon type="ios-search-strong"></Icon></Button>
         </div>
         <Row type="flex" align="middle" class="page">
           <span>Show</span>
@@ -20,14 +20,14 @@
     </Row>
     <Row class="image-list" :gutter="16">
       <Col :lg="6" :sm="12" class="vm-margin" v-for="item in dataShow" :key="item.id">
-      <VmCard :editable="true" :title="item.title" :img="item.img" :desc="item.desc" :detailUrl="item.detailUrl" :editUrl="item.editUrl" @delete-ok=" deleteOk(item) "></VmCard>
+      <VmCard :src="item.src" height="300px" :showDetail=showDetail></VmCard>
       </Col>
     </Row>
   </div>
 </template>
 <style scoped>
   .page{
-    margin-left: 80%;
+    margin-left: 60%;
   }
 </style>
 <script>
@@ -37,33 +37,15 @@
     components: {
       VmCard
     },
-    props: {
-      title: {
-        type: String,
-        default: 'Image List'
-      },
-      // origin data
-      data: {
-        type: Array,
-        default: function () {
-          return [
-            {
-              id: '19920805',
-              title: 'Title',
-              // img: require('@/assets/img/img-1.jpg'),
-              desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry,Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s ly dummy tly dummy tly dummy tly dummy tly dummy tly dummy t',
-              to: '#'
-            }
-          ]
-        }
-      }
-    },
     data: function () {
       return {
+        title:"全部照片",
+        data:[],
         keyword: '', // keyword for search
         dataShow: [], // data for showing
         showNum: 8, // number of item per page
-        currentPage: 1
+        currentPage: 1,
+        showDetail:false,
       }
     },
     methods: {
@@ -99,6 +81,13 @@
       }
     },
     mounted: function () {
+      for (let i = 1; i < 8; i++) {
+        let displayPhoto = {
+          id: i,
+          src: require("@/assets/image/" + i + ".jpg"),
+        }
+        this.data.push(displayPhoto);
+      }
       this.dataShow = this.data.slice(0, this.showNum)
     }
   }
