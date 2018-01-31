@@ -3,7 +3,7 @@
     <navigator-bar></navigator-bar>
     <div style="height: 830px">
       <router-view/>
-      <router-view name="extra"/>
+      <!--<router-view name="extra"/>-->
     </div>
   </div>
 </template>

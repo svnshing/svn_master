@@ -1,6 +1,6 @@
 <template>
   <div style="height: 100%">
-    <cyclical-photo :photos="photos" :notNextTick=notNextTick SwiperHeight="90%"></cyclical-photo>
+    <cyclical-photo :photos="photos" :notNextTick=notNextTick SwiperHeight="900px"></cyclical-photo>
     <my-footer :message="message"></my-footer>
   </div>
 </template>

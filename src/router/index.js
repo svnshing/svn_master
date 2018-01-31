@@ -8,7 +8,7 @@ import PhotoManager from '../page/PhotoManager'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  mode: 'hash',// todo 打包不能使用history模式
   base: __dirname,
   routes: [
     {
